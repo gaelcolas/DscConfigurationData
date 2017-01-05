@@ -10,11 +10,13 @@ function Get-DscEncryptedPassword
         [Alias('BaseName')]
         [string]
         $StoreName,
+
         [parameter(
             ParameterSetName = 'ByStoreName'
         )]
         [string]
         $Path = (Join-path $script:ConfigurationDataPath 'Credentials'),
+        
         [parameter(
             ParameterSetName = 'ByPipeline',
             ValueFromPipelineByPropertyName,
@@ -23,6 +25,7 @@ function Get-DscEncryptedPassword
         [Alias('FullName')]
         [string]
         $EncryptedFilePath,
+        
         [parameter()]
         [string[]]
         $UserName
@@ -51,12 +54,6 @@ function Get-DscEncryptedPassword
             try
             {
                 $hashtable = Import-DscCredentialFile -Path $EncryptedFilePath -ErrorAction Stop
-
-                if ($null -eq $hashtable)
-                {
-                    Write-Verbose "Failed to import $EncryptedFilePath with latest format.  Attempting legacy import."
-                    $hashtable = Import-LegacyDscCredentialFile -EncryptedFilePath $EncryptedFilePath
-                }
             }
             catch
             {
