@@ -23,6 +23,5 @@ function ShouldProcessService
             return $true
         }
     }
-
     return $false
 }

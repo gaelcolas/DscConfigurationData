@@ -1,5 +1,5 @@
 Remove-Module DscConfiguration -Force -ErrorAction SilentlyContinue
-Import-Module -Name $PSScriptRoot\..\DscConfiguration.psd1 -Force -ErrorAction Stop
+Import-Module -Name $PSScriptRoot\..\..\DscConfiguration.psd1 -Force -ErrorAction Stop
 
 describe 'how Resolve-DscConfigurationProperty responds' {
     $ConfigurationData = @{

@@ -1,3 +1,4 @@
+#require -Module ProtectedData
 function Import-DscCredentialFile
 {
     [CmdletBinding()]

@@ -1,3 +1,4 @@
+#require -Module ProtectedData
 function Export-DscCredentialFile
 {
     [CmdletBinding()]
