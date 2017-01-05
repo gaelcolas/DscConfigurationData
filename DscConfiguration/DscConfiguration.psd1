@@ -5,7 +5,7 @@
 RootModule = 'DscConfiguration.psm1'
 
 # Version number of this module.
-ModuleVersion = '3.0.0-alpha'
+ModuleVersion = '3.0.0'
 
 # ID used to uniquely identify this module
 GUID = '0b48e2a7-dcd7-4888-95ec-f80d6fca03b6'
