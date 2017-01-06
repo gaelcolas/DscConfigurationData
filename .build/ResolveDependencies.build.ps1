@@ -15,7 +15,6 @@ task InstallPSDepends {
     $installModuleParams = @{
         Name = 'PSDepend'
         Repository = @($GalleryRepository)
-        Verbose = $true
     }
     if ($GalleryPSCredential) {
         $installModuleParams.Add('Credential',$GalleryPSCredential)
@@ -25,7 +24,7 @@ task InstallPSDepends {
 
 task ResolveDependencies InstallPSDepends, {
     'Resolving Dependencies'
-    Invoke-PSDepend .\Dependencies.psd1 -Force -Verbose
+    Invoke-PSDepend .\Dependencies.psd1 -Force
 }
 
 task SetBuildEnvironment ResolveDependencies, {

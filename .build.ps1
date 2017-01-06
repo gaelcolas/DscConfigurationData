@@ -11,6 +11,6 @@ Get-ChildItem -Path "$PSScriptRoot/.build/" -Recurse -Include *.build.ps1 -Verbo
         . $_.FullName 
     }
 
-task . ResolveDependencies, {
+task . ResolveDependencies, UnitTests, IntegrationTests, {
     'Default Task Reached'
 }
