@@ -5,12 +5,12 @@
     [Uri]
     $GalleryProxy #used in ResolveDependencies, $null if not specified
 )
-Get-ChildItem -Path "$PSScriptRoot/.build/" -Recurse -Include *.build.ps1 -Verbose |
+
+Get-ChildItem -Path "$PSScriptRoot/.build/" -Recurse -Include *.ps1 -Verbose |
     Foreach-Object {
-        Write-Verbose "Importing task file $($_.BaseName)" 
+        "Importing file $($_.BaseName)" 
         . $_.FullName 
     }
 
-task . ResolveDependencies, UnitTests, IntegrationTests, {
-    'Default Task Reached'
-}
+task . ResolveDependencies, SetBuildVariable, UnitTests, DoSomething,FailBuildIfFailedUnitTest, IntegrationTests
+#task . ResolveDependencies, SetBuildVariable, UnitTestsStopOnFail, IntegrationTests
