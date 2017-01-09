@@ -1,11 +1,15 @@
 function New-Credential
 {
-    param ($username, $password)
+    param (
+        [string]
+        $username,
+        $password
+    )
 
     if ($password -isnot [securestring])
     {
         $password = $password | ConvertTo-SecureString -AsPlainText -Force
     }
 
-    return New-Object System.Management.Automation.PSCredential -ArgumentList $username, $password
+    return ([System.Management.Automation.PSCredential]::new($username, $password))
 }

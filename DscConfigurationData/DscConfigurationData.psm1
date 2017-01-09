@@ -25,7 +25,7 @@ else
     $LocalCertificatePath = ''
 }
 
-$ConfigurationData = @{AllNodes=@(); Credentials=@{}; Applications=@{}; Services=@{}; SiteData =@{}}
+$ConfigurationData = @{AllNodes=@(); Credentials=@{}; Services=@{}; SiteData =@{}}
 
 Get-ChildItem -Path "$PSScriptRoot\Private" | ForEach-Object {
     . $_.FullName
