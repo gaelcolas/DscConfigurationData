@@ -5,7 +5,7 @@
 RootModule = 'DscConfiguration.psm1'
 
 # Version number of this module.
-ModuleVersion = '3.0.0'
+ModuleVersion = '0.0.1'
 
 # ID used to uniquely identify this module
 GUID = '0b48e2a7-dcd7-4888-95ec-f80d6fca03b6'
@@ -14,10 +14,10 @@ GUID = '0b48e2a7-dcd7-4888-95ec-f80d6fca03b6'
 Author = 'Steven Murawski, Dave Wyatt, Gael Colas'
 
 # Company or vendor of this module
-#CompanyName = 'Chef, Inc'
+#CompanyName = 'SynEdgy Limited'
 
 # Copyright statement for this module
-Copyright = '(c) 2017 Steven Murawski. All rights reserved.'
+Copyright = '(c) 2017 Gael Colas. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''

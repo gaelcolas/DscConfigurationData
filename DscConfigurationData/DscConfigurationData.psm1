@@ -27,13 +27,21 @@ else
 
 $ConfigurationData = @{AllNodes=@(); Credentials=@{}; Services=@{}; SiteData =@{}}
 
-Get-ChildItem -Path "$PSScriptRoot\Private" | ForEach-Object {
-    . $_.FullName
-    Write-Verbose -Message ('Loading {0}' -f $_.BaseName)
-}
+#Get public and private function definition files.
+    $Public  = @( Get-ChildItem -Path $PSScriptRoot\Public\*.ps1 -ErrorAction SilentlyContinue )
+    $Private = @( Get-ChildItem -Path $PSScriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue )
 
-Get-ChildItem -Path "$PSScriptRoot\Public" | ForEach-Object {
-    . $_.FullName
-    Write-Verbose -Message ('Loading and exporting {0}' -f $_.BaseName)
-    Export-ModuleMember -Function $_.BaseName
-} 
+#Dot source the files
+    Foreach($import in @($Public + $Private))
+    {
+        Try
+        {
+            . $import.fullname
+        }
+        Catch
+        {
+            Write-Error -Message "Failed to import function $($import.fullname): $_"
+        }
+    }
+
+Export-ModuleMember -Function $Public.Basename

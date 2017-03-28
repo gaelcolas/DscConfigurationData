@@ -9,10 +9,13 @@
     $GalleryPSCredential = $(try { property GalleryPSCredential } catch { }), #propagate or use $null
 
     [string]
+    $Dependency = $(try { property Dependency } catch { '.\Dependencies.psd1' }), #propagate or use $null
+
+    [string]
     $LineSeparation = (property LineSeparation ('-' * 78)) 
 )
 
-task InstallPSDepends {
+task InstallPSDepend -if {!(Get-Module -ListAvailable PSDepend)} {
     $LineSeparation
     "Installing PSDepends from $GalleryRepository"
     ""
@@ -29,12 +32,15 @@ task InstallPSDepends {
     }
 
     Install-Module @installModuleParams
-}
+} 
 
-task ResolveDependencies InstallPSDepends, {
+task ResolveDependencies InstallPSDepend, {
     $LineSeparation
-    'Resolving Dependencies'
-    Invoke-PSDepend .\Dependencies.psd1 -Force
+    if (!(Invoke-PSDepend -Test $Dependency)) {
+        'Resolving Dependencies'
+        Invoke-PSDepend $Dependency -Force
+    }
+    
 }
 
 task ResolveTasksModuleDependencies {

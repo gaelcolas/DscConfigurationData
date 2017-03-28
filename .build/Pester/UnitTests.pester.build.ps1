@@ -14,7 +14,8 @@ Param (
     [string]
     $LineSeparation = (property LineSeparation ('-' * 78))
 )
-task UnitTests {
+
+task UnitTest {
     $LineSeparation
     "`t`t`t RUNNING UNIT TESTS"
     $LineSeparation
