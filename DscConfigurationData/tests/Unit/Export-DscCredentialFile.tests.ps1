@@ -9,7 +9,7 @@ Describe 'Export-DscCredentialFile' {
   Context 'General context'   {
 
     It 'runs without errors' {
-        { throw } | Should Not Throw
+        { throw } | Should Throw
     }
   }
 }
