@@ -31,7 +31,7 @@ function Import-ConfigurationDataObject {
                         $_ | Convert-PSObjectToHashTable           
                     }
                 }
-                Default { Write-Verbose "[ConvertFrom-TextFile] Extension for file $($fileToProcess.name) not recognised. Skipping" }
+                Default { Write-Verbose "[ConvertFrom-TextFile] Extension for file $($file.name) not recognised. Skipping" }
             }
         }
     }
