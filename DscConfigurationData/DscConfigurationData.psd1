@@ -5,7 +5,7 @@
 RootModule = 'DscConfigurationData.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.0.2'
 
 # ID used to uniquely identify this module
 GUID = '0b48e2a7-dcd7-4888-95ec-f80d6fca03b6'
@@ -20,7 +20,7 @@ Author = 'Steven Murawski, Dave Wyatt, Gael Colas'
 Copyright = '(c) 2017 Gael Colas. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'DSC Tooling'
 
 # Minimum version of the Windows PowerShell engine required by this module
 # PowerShellVersion = ''
