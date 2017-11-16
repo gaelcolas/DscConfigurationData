@@ -5,7 +5,7 @@
 RootModule = 'DscConfigurationData.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.2'
+ModuleVersion = '0.0.4'
 
 # ID used to uniquely identify this module
 GUID = '0b48e2a7-dcd7-4888-95ec-f80d6fca03b6'
@@ -42,7 +42,8 @@ Description = 'DSC Tooling'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(
-    @{ ModuleName = 'ProtectedData'; ModuleVersion = '4.1.0' }
+    @{ ModuleName = 'ProtectedData'; ModuleVersion = '4.1.0' },
+    ,'powershell-yaml'
 )
 
 # Assemblies that must be loaded prior to importing this module
