@@ -8,7 +8,7 @@ function Get-ServiceConfigurationData {
         (Test-Path -Path $servicePath)) {
         Write-Verbose "Processing Services from $($script:ConfigurationDataPath))."
         foreach ( $item in (Get-ChildItem -Path $servicePath) ) {
-            if ($importedObject = Import-ConfigurationDataObject -Path $item.FullName) {
+            if ($importedObject = Get-FileProviderData -Path $item.FullName) {
                 Write-Verbose "Loading data for Service $($item.basename) from $($item.fullname)."
                 $script:ConfigurationData.Services.Add($item.BaseName, $importedObject)
             }

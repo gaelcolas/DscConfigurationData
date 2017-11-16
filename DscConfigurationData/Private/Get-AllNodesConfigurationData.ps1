@@ -8,7 +8,7 @@ function Get-AllNodesConfigurationData {
         Write-Verbose "Processing AllNodes from $($script:ConfigurationDataPath)."
 
         $Script:ConfigurationData.AllNodes = @()
-        $script:ConfigurationData.AllNodes += (Import-ConfigurationDataObject -Path $nodePath)
+        $script:ConfigurationData.AllNodes += (Get-FileProviderData -Path $nodePath)
     }
 }
 

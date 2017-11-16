@@ -1,5 +1,5 @@
 Remove-Module DscConfigurationData -ErrorAction SilentlyContinue
-Import-Module ..\..\DscConfigurationData.psd1 -Force
+Import-Module $PSScriptRoot\..\..\DscConfigurationData.psd1 -Force
 
 Describe "Get-DSCConfigurationData Tests" {
     Set-DscConfigurationDataPath .\TestData\DSC_Configuration

@@ -1,5 +1,4 @@
-# Taken lovingly from Dave Wyatt's answer here: https://stackoverflow.com/questions/3740128/pscustomobject-to-hashtable
-function Convert-PSObjectToHashtable
+function ConvertTo-Hashtable
 {
     param (
         [Parameter(ValueFromPipeline)]
@@ -10,10 +9,13 @@ function Convert-PSObjectToHashtable
     {
         if ($null -eq $InputObject) { return $null }
 
-        if ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [string])
+        if ($InputObject -is [System.Collections.Hashtable]) {
+            return $InputObject
+        }
+        elseif ($InputObject -is [System.Collections.IEnumerable] -and $InputObject -isnot [string])
         {
             $collection = @(
-                foreach ($object in $InputObject) { Convert-PSObjectToHashtable $object }
+                foreach ($object in $InputObject) { ConvertTo-Hashtable $object }
             )
 
             Write-Output -NoEnumerate $collection
@@ -24,7 +26,7 @@ function Convert-PSObjectToHashtable
 
             foreach ($property in $InputObject.PSObject.Properties)
             {
-                $hash[$property.Name] = Convert-PSObjectToHashtable $property.Value
+                $hash[$property.Name] = ConvertTo-Hashtable $property.Value
             }
 
             $hash

@@ -8,7 +8,7 @@ function Get-SiteDataConfigurationData {
         (Test-Path -Path $sitePath)) {
         Write-Verbose "Processing SiteData from $($script:ConfigurationDataPath))."
         foreach ( $item in (Get-ChildItem $sitePath) ) {
-            if ($importedObject = Import-ConfigurationDataObject -Path $item.FullName) {
+            if ($importedObject = Get-FileProviderData -Path $item.FullName) {
                 Write-Verbose "Loading data for site $($item.basename) from $($item.fullname)."
                 $script:ConfigurationData.SiteData.Add($item.BaseName, ($importedObject))
             }
