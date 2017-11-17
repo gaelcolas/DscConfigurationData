@@ -136,7 +136,7 @@ function Resolve-DscConfigurationProperty
             throw 'Failed to resolve ConfigurationData.  Please confirm that $ConfigurationData is property set in a scope above this Resolve-DscConfigurationProperty or passed to Resolve-DscConfigurationProperty via the ConfigurationData parameter.'
         }
     }
-
+    $value = @()
     $doGetAllResults = $ResolutionBehavior -eq 'AllValues'
 
     Write-Verbose "Starting to evaluate $($Node.Name) for PropertyName: $PropertyName and resolution behavior: $ResolutionBehavior"

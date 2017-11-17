@@ -1,0 +1,7 @@
+{
+    "ExampleProperty1":  "From Service",
+    "BaseServerSettings":  {
+                               "PowerPlan":  "HighPerformance"
+                           },
+    "Nodes":  ""
+}

@@ -45,11 +45,11 @@ function Get-DscConfigurationData
         {
             'NameFilter' {
                 Write-Verbose "Filtering for nodes with the Name $Name"
-                $script:ConfigurationData.AllNodes = $script:ConfigurationData.AllNodes.Where({$_.Name -like $Name})
+                [hashtable[]]$script:ConfigurationData.AllNodes = $script:ConfigurationData.AllNodes.Where({$_.Name -like $Name})
             }
             'NodeNameFilter' {
                 Write-Verbose "Filtering for nodes with the GUID of $NodeName"
-                $script:ConfigurationData.AllNodes = $script:ConfigurationData.AllNodes.Where({$_.NodeName -like $NodeName})
+                [hashtable[]]$script:ConfigurationData.AllNodes = $script:ConfigurationData.AllNodes.Where({$_.NodeName -like $NodeName})
             }
             default {
             }
